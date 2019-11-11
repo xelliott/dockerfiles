@@ -1,0 +1,35 @@
+kind: pipeline
+name: default
+
+steps:
+- name: gcc-6.1-openmpi  
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: DOCKERHUB_USERNAME
+    password:
+      from_secret: DOCKERHUB_PASSWORD
+    repo:
+      from_secret: DOCKERHUB_REPO
+    context: /gcc-6.1-openmpi
+    tags: 6.1
+    force_tag: true
+  depends_on: [ clone ]
+  
+- name: gcc-7-openmpi  
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: DOCKERHUB_USERNAME
+    password:
+      from_secret: DOCKERHUB_PASSWORD
+    repo:
+      from_secret: DOCKERHUB_REPO
+    context: /gcc-7-openmpi
+    tags: 7
+    force_tag: true
+  depends_on: [ clone ]
+  
+ trigger:
+   branch:
+   - master
