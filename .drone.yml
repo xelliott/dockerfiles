@@ -30,6 +30,6 @@ steps:
     force_tag: true
   depends_on: [ clone ]
   
- trigger:
-   branch:
-   - master
+trigger:
+  branch:
+  - master
