@@ -1,0 +1,9 @@
+packages:
+  openmpi:
+    variants: -cxx_exceptions -vt
+  fftw:
+    variants: -mpi
+  hdf5:
+    variants: +fortran +mpi
+  all:
+    target: [x86_64]
