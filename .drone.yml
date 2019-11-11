@@ -11,7 +11,7 @@ steps:
       from_secret: DOCKERHUB_PASSWORD
     repo:
       from_secret: DOCKERHUB_REPO
-    context: /gcc-6.1-openmpi
+    context: ./gcc-6.1-openmpi
     tags: 6.1
     force_tag: true
   depends_on: [ clone ]
@@ -25,7 +25,7 @@ steps:
       from_secret: DOCKERHUB_PASSWORD
     repo:
       from_secret: DOCKERHUB_REPO
-    context: /gcc-7-openmpi
+    context: ./gcc-7-openmpi
     tags: 7
     force_tag: true
   depends_on: [ clone ]
