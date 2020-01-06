@@ -8,6 +8,7 @@ ENV SPACK_VERSION=0.13.1 \
 RUN apt-get update && apt-get install -y --no-install-recommends \
        autoconf \
        cmake \
+       tcl \
        environment-modules \
        vim \
     && rm -rf /var/lib/apt/lists/*
