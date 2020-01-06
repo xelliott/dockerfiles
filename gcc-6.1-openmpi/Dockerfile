@@ -20,6 +20,7 @@ COPY packages.yaml $SPACK_ROOT/etc/spack/
 
 # install libraries
 RUN . $SPACK_ROOT/share/spack/setup-env.sh \
+    && spack install cmake@3.12.0 \
     && spack install openmpi \
     && spack install fftw \
     && spack install hdf5 \
@@ -28,6 +29,7 @@ RUN . $SPACK_ROOT/share/spack/setup-env.sh \
 # load spack environment on login
 RUN . $SPACK_ROOT/share/spack/setup-env.sh \
     && echo "source $SPACK_ROOT/share/spack/setup-env.sh" > /etc/profile.d/spack.sh \
+    && spack module tcl loads cmake >> /etc/profile.d/spack.sh \
     && spack module tcl loads openmpi >> /etc/profile.d/spack.sh \
     && spack module tcl loads hdf5 >> /etc/profile.d/spack.sh \
     && spack module tcl loads fftw >> /etc/profile.d/spack.sh
