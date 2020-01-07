@@ -7,6 +7,7 @@ ENV SPACK_VERSION=0.13.1 \
 # Install minimal dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
        autoconf \
+       xsltproc \
        cmake \
        tcl \
        environment-modules \
