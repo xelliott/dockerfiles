@@ -2,7 +2,7 @@ packages:
   openmpi:
     variants: -cxx_exceptions -vt
   fftw:
-    variants: -mpi
+    variants: -mpi +openmp
   hdf5:
     variants: +fortran +mpi
   all:
