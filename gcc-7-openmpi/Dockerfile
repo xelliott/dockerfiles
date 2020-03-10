@@ -23,7 +23,7 @@ COPY packages.yaml $SPACK_ROOT/etc/spack/
 # install libraries
 RUN . $SPACK_ROOT/share/spack/setup-env.sh \
     && spack install openmpi \
-    && spack install cuda@10.0 \
+    && spack install cuda@10.0.130 \
     && spack install fftw \
     && spack install hdf5 \
     && spack clean -a
