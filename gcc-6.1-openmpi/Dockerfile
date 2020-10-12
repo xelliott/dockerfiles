@@ -1,6 +1,6 @@
 FROM gcc:6.1
 
-ENV SPACK_VERSION=0.13.1 \
+ENV SPACK_VERSION=0.15.4 \
     SPACK_ROOT=/opt/spack \
     FORCE_UNSAFE_CONFIGURE=1
 
@@ -21,7 +21,7 @@ COPY packages.yaml $SPACK_ROOT/etc/spack/
 
 # install libraries
 RUN . $SPACK_ROOT/share/spack/setup-env.sh \
-    && spack install cmake@3.12.0 \
+    && spack install cmake@3.13.0 \
     && spack install openmpi \
     && spack install cuda@9.1.85 \
     && spack install fftw \
