@@ -1,6 +1,6 @@
 FROM gcc:7
 
-ENV SPACK_VERSION=0.15.4 \
+ENV SPACK_VERSION=0.17.1 \
     SPACK_ROOT=/opt/spack \
     FORCE_UNSAFE_CONFIGURE=1
 
@@ -22,15 +22,17 @@ COPY packages.yaml $SPACK_ROOT/etc/spack/
 
 # install libraries
 RUN . $SPACK_ROOT/share/spack/setup-env.sh \
-    && spack install openmpi \
+    && spack install cmake@3.22 \
+    && spack install openmpi@3.1.6 \
     && spack install cuda@10.0.130 \
-    && spack install fftw \
-    && spack install hdf5 \
+    && spack install fftw@3.3.8 \
+    && spack install hdf5@1.10.7 \
     && spack clean -a
 
 # load spack environment on login
 RUN . $SPACK_ROOT/share/spack/setup-env.sh \
     && echo "source $SPACK_ROOT/share/spack/setup-env.sh" > /etc/profile.d/spack.sh \
+    && spack module tcl loads cmake >> /etc/profile.d/spack.sh \
     && spack module tcl loads openmpi >> /etc/profile.d/spack.sh \
     && spack module tcl loads cuda >> /etc/profile.d/spack.sh \
     && spack module tcl loads hdf5 >> /etc/profile.d/spack.sh \
