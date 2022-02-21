@@ -22,7 +22,7 @@ COPY packages.yaml $SPACK_ROOT/etc/spack/
 
 # install libraries
 RUN . $SPACK_ROOT/share/spack/setup-env.sh \
-    && spack install cmake@3.22 \
+    && spack install cmake@3.21.4 \
     && spack install openmpi@3.1.6 \
     && spack install cuda@10.0.130 \
     && spack install fftw@3.3.8 \
