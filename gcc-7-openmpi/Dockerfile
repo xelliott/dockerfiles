@@ -26,7 +26,7 @@ RUN . $SPACK_ROOT/share/spack/setup-env.sh \
     && spack install openmpi@3.1.6 \
     && spack install cuda@10.0.130 \
     && spack install fftw@3.3.8 \
-    && spack install hdf5@1.10.7 \
+    && spack install hdf5@1.10.7 ^openmpi@3.1.6 \
     && spack clean -a
 
 # load spack environment on login
