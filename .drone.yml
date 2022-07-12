@@ -17,6 +17,21 @@ steps:
     force_tag: true
   depends_on: [ clone ]
   
+- name: clang-openmpi-cuda  
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: DOCKERHUB_USERNAME
+    password:
+      from_secret: DOCKERHUB_PASSWORD
+    repo:
+      from_secret: DOCKERHUB_REPO
+    dockerfile: clang-openmpi-cuda/Dockerfile
+    context: clang-openmpi-cuda
+    tags: 14-11.2
+    force_tag: true
+  depends_on: [ clone ]
+  
 trigger:
   branch:
   - master
