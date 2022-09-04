@@ -2,20 +2,6 @@ kind: pipeline
 name: default
 
 steps:
-- name: gcc-7-openmpi  
-  image: plugins/docker
-  settings:
-    username:
-      from_secret: DOCKERHUB_USERNAME
-    password:
-      from_secret: DOCKERHUB_PASSWORD
-    repo: xuanxaq/dev-toolchain
-    dockerfile: gcc-7-openmpi/Dockerfile
-    context: gcc-7-openmpi
-    tags: gcc7
-    force_tag: true
-  depends_on: [ clone ]
-  
 - name: clang-openmpi-cuda  
   image: plugins/docker
   settings:
@@ -26,7 +12,7 @@ steps:
     repo: xuanxaq/dev-toolchain
     dockerfile: clang-openmpi-cuda/Dockerfile
     context: clang-openmpi-cuda
-    tags: clang14-cuda11.2
+    tags: clang14-cuda11.5
     force_tag: true
   depends_on: [ clone ]
   
