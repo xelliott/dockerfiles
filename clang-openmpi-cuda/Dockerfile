@@ -11,6 +11,7 @@ RUN \
     sed -i -e's/ main/ main contrib non-free/g' /etc/apt/sources.list  \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
+       software-properties-common \
        ninja-build \
        sudo \
        less \
