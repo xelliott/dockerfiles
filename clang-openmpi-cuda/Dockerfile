@@ -7,9 +7,13 @@ RUN \
     sed -i -e's/ main/ main contrib non-free/g' /etc/apt/sources.list  \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
+       ninja-build \
+       less \
+       git \
        autoconf \
        xsltproc \
        vim \
+       build-essential \
        libfftw3-dev \
        libhdf5-mpi-dev \
        nvidia-cuda-toolkit-gcc \
