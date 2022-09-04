@@ -24,11 +24,12 @@ RUN \
     && rm -rf /var/lib/apt/lists/*
 RUN \
     wget https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64/cuda-keyring_1.0-1_all.deb \
-    dpkg -i cuda-keyring_1.0-1_all.deb \
-    add-apt-repository contrib \
-    apt-get update \
-    apt-get install -y cuda-${CUDA_VERSION} \
-    && rm -rf /var/lib/apt/lists/*
+    && dpkg -i cuda-keyring_1.0-1_all.deb \
+    && add-apt-repository contrib \
+    && apt-get update \
+    && apt-get install -y cuda-${CUDA_VERSION} \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm cuda-keyring_1.0-1_all.deb
 
 # Install CMake
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
@@ -41,10 +42,7 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    #
     # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
-    && apt-get update \
-    && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
